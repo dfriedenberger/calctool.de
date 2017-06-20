@@ -81,7 +81,7 @@ public class Sum extends MathFunction {
 	@Override
 	public MathImage createImage(MathImageCreator imageCreator, MathTerm[] child) {
 
-		int hh = (imageCreator.getRuntimeHP());  //Buchstaben vor und über summe
+		int hh = (imageCreator.getRuntimeHP());  //Buchstaben vor und ueber summe
 		int h = (2 * hh + 30);
 		MathImage sum = imageCreator.createImage(h + 15); // rt,h/rt.HP + 1
 		int o = sum.off;

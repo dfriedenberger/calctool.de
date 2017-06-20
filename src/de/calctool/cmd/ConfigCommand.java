@@ -34,12 +34,12 @@ public class ConfigCommand extends MathCommand
 		//now try to interpret the commands
 		if(key.equals("numeric"))
 		    {
-			rt.set(rt.METHOD,rt.NUMERIC);
+			rt.set(MathRuntime.METHOD,MathRuntime.NUMERIC);
 			resp = "set evalmethod to numeric";
 		    }
 		if(key.equals("symbolic"))
 		    {
-			rt.set(rt.METHOD,rt.SYMBOLIC);
+			rt.set(MathRuntime.METHOD,MathRuntime.SYMBOLIC);
 			resp = "set evalmethod to symbolic";
 		    }
 	    }

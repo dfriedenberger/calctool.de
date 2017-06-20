@@ -96,6 +96,7 @@ public class MathVM
             return new MathResult[]{new MathResult(e.getMessage())};
         }
     }
+/*
     public String[] getExamples(Hashtable options)
     {
     	
@@ -105,6 +106,7 @@ public class MathVM
 			    " 1/2 + 2/6 * 1/7" ,
 			    "A := matrix([ 1 , i ] , [ 3 , 4 ] )" };
     }
+*/
 	public MathDefinitions getDefinitions() {
 		return definitions;
 	}
