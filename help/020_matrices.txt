@@ -1,0 +1,4 @@
+#Matrices
+Define Matrix : A := matrix([ 1 , 2 ] , [ 3 , 4 ] )
+Calculate with Matrices : (A + 5 * A) * A
+exponentiate Matrix : A ^ 3

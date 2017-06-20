@@ -1,0 +1,5 @@
+#Combinatorics
+Permutation with repetition n^k : 5 ^ 2
+Permutation without repetition (n)k : perm(5,2)
+Combination with repetition binom(n,k) : binom(5,2)
+Combination without repetition binom(n + r - 1, r) : binom(6,2)

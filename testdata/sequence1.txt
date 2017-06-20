@@ -1,0 +1,26 @@
+#Addition
+1 + 0 : 1
+0 + 1 : 1
+a + 0 : a
+0 + a : a
+
+#Multiplikation
+a * 0 : 0
+0 * a : 0
+a * 1 : a
+1 * a : a
+
+#Trigomometrische 
+pi : pi
+sin(0) : 0
+sin(1 / 2 * pi) : 1
+sin(pi) : 0
+sin(2 * pi) : 0
+sin(-1 / 2 * pi) : -1
+sin(-1 * pi) : 0
+sin(-3 / 2 * pi) : 1
+
+cos(0) : 1
+cos(1 / 2 * pi) : 0
+cos(pi) : -1
+cos(3 / 2 * pi) : 0

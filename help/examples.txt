@@ -1,0 +1,6 @@
+
+	
+%section Config : (Type in or Copy and Paste)
+Set Method to Numeric : conf NUMERIC
+Set Method to Symbolic : conf SYMBOLIC
+

@@ -1,0 +1,5 @@
+#Sequence and Series
+Define Sequence: a(n) := sum(j,1,n,1/j^2)
+Limes of Sequence : lim((1 - 1/x)^x,x,infinity)
+Polynom as Serie : P(n) := sum(k,0,n,b(k) * x ^ k)
+

@@ -1,0 +1,31 @@
+Calctool
+
+Beschreibung
+Kern von Calctool ist die „Mathematische Virtuelle Maschine“ , sie verwaltet zum Ersten die jeweiligen Runtimes der einzelnen Sessions. Damit sind mehrzeilige Eingaben möglich. Zum Beispiel:
+
+a := 5;                                     #Definieren einer Konstante a
+f(x) := a * x² + x – 1;                     #Defineren einer Funktion in einer
+                                             Veränderlichen (unter Verwendung von a = 5)
+plot( f(x) );                               #Ploten der Funktion 
+
+
+Als zweites werden die mathematischen Funktionen in der VM verwaltet. Diese müßen von der
+abstrakten Klasse MathFunktion abgeleitet sein. Als Funktionen sind im Moment implementiert:
+
+Addition ,  Subtraction , Division ,  Multiplication
+Compare (< , = , > )
+SquareRoot
+Exponentiation 
+Logarithm ( ln , ld , log )
+Trigonometric ( sin , cos , tan )
+Plot
+Desweiteren werden in der VM spezielle Kommandos verwaltet, welche von der abstrakten Klasse MathCommand abgeleitet sind. 
+Dazu zählen:
+
+IsCommand                     ( Formatierung von Zahlenwerten in die unterschiedlichen Darstellungsformen)
+TimeCommand                (Konvertierung von Unixzeit in Ascii , bzw. aktuelle zeit bei Aufruf ohne Parameter)  
+ 
+Der Parser (MathTokenizer , MathToken)  zum Parsen der Ausdrücke ist in der Klasse MathTerm als static Function implementiert. Dieser liefert einen Baum zurück in der jeder Node wiederrum ein MathTerm ist. Dadurch lässt sich die Priorität einfach abbilden und in allen folgenden Operationen nutzen. Das Object MathTerm ist das Herzstück der MathVM. Jeder Ausdruck (MathTerm) , jede Funktion (MathFunction)  und jede Zahl (MathNumber)  werden durch ein MathTerm repräsentiert. Die Objekte MathTerm werden erst durch den eval-Aufruf berechnet und durch das MathResult (als Adapter) in eine ausgebbare Form gebracht (Text oder Bild). Dabei ist zu beachten, das im eval-Schritt versucht wird, alle Ausdrücke in ein Polynom (der Form  ? a ? xn ) zu wandeln. Dadurch werden für spätere Berechnungen, wie Differenzieren oder Integrale, die Ausdrücke linearisiert. 
+Als Schnittstellen sind zur Zeit das WebInterface (MathServer),  welches zum Beispiel über www.calctool.de erreichbar ist , und der Komandozeileninterpreter (MathVM , main ) implementiert.
+
+
