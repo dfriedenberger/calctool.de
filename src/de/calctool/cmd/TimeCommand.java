@@ -15,44 +15,47 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 package de.calctool.cmd;
-import de.calctool.vm.*;
+
 
 import java.util.Date;
 
-public class TimeCommand extends MathCommand
-{
-    public String getName() { return "time"; };
-    public MathResult[] eval(MathRuntime rt,String par)
-    {
-        String p[] = split(par);
-	if(p.length == 0)
-	    {
-		long now = new Date().getTime();
-		String s = (now/1000)+" "+(now % 1000)+" msec";
-		return new MathResult[]{ new MathResult(s) , time(""+now) };
-	    }
-        MathResult r[] = new MathResult[p.length];
-        for(int i = 0;i < p.length;i++)
-            r[i] = time(p[i]);
-        return r;
-    }
-    private MathResult time(String val)
-    {
-        MathNumber n = MathNumber.parse(val);
-        if(n.isLong())
-        {
-	    long ui4_border = 4294967295L;
-            String t = "";
-            long l = n.getNumerator();
-	    System.out.println("time : "+l+"  "+(l < ui4_border)+" "+(0xffffffff));
-	    if(l < ui4_border)
-		l *= 1000;
-	    System.out.println("time : "+l);
+import de.calctool.vm.MathNumber;
+import de.calctool.vm.MathResult;
+import de.calctool.vm.MathRuntime;
+import de.calctool.vm.MathTerm;
 
-	    t = ""+new Date(l);
-	    return new MathResult(t);
-        }
-        return new MathResult(new MathTerm(n));
-    } 
+public class TimeCommand extends MathCommand {
+	
+	public String getName() {
+		return "time";
+	};
+
+	public MathResult[] eval(MathRuntime rt, MathTerm[] p) {
+		if (p.length == 0) {
+			long now = new Date().getTime();
+			String s = (now / 1000) + " " + (now % 1000) + " msec";
+			return new MathResult[] { new MathResult(s), time(new MathTerm(new MathNumber(now))) };
+		}
+		MathResult r[] = new MathResult[p.length];
+		for (int i = 0; i < p.length; i++)
+			r[i] = time(p[i]);
+		return r;
+	}
+
+	private MathResult time(MathTerm val) {
+		MathNumber n = val.getNumber();
+		if (n.isLong()) {
+			long ui4_border = 4294967295L;
+			String t = "";
+			long l = n.getNumerator();
+			System.out.println("time : " + l + "  " + (l < ui4_border) + " " + (0xffffffff));
+			if (l < ui4_border)
+				l *= 1000;
+			System.out.println("time : " + l);
+
+			t = "" + new Date(l);
+			return new MathResult(t);
+		}
+		return new MathResult(new MathTerm(n));
+	}
 }
-

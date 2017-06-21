@@ -15,6 +15,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 package de.calctool.vm;
+import de.calctool.cmd.MathCommand;
 import de.calctool.func.*;
 import de.calctool.parser.MathParser;
 import de.calctool.parser.MathToken;
@@ -36,6 +37,7 @@ public class MathTerm
     public List<MathTerm> child = new ArrayList<MathTerm>();
     public int level = -1;
 	private MathDataSet dataSet = null;
+	private MathCommand command = null;
  
     //special Types
     public final static String INFINITY = "infini";
@@ -92,54 +94,12 @@ public class MathTerm
     }
 
     //can set an image 
-    public boolean hasImage()
-    {
-	if(needImage()) return true;
-	return image != null;
-    }
+   
     public void setImage(MathImage image)
     {
         this.image = image;
     }
-    public boolean needImage()
-    {
-    	return true;
-    	
-    	/*
-	System.out.println("need image "+this);
-	if(isMatrix()) return true;
-	
-	if(function != null)
-	    {
-		MathFunction f = MathFunction.get(function,false);
-		if(f != null)
-		    if(f.needImage(child)) return true;
-	    }
-	if(simpleoperation > 0)
-	    {
-		MathFunction f = MathFunction.get(""+simpleoperation,false);
-		if(f != null)
-		    if(f.needImage(child)) return true;
-	    }
-	
-	for(int i = 0;i < child.size();i++)
-	    if(child.get(i).needImage()) return true;
-	return false;
-	*/
-    }
 
-    /*
-    public MathImage getImage(MathRuntime rt)
-    {
-	if(needImage()) 
-	    {
-		   return createImage(rt);
-	    }
-        if(hasImage())
-            return image;
-        throw new RuntimeException("has no image "+this);
-    }
-    */
     public boolean is(String key)
     {
         if(function != null)
@@ -150,8 +110,8 @@ public class MathTerm
     
     public void add(MathTerm ch)
     {
-        if(function == null)
-            throw new RuntimeException("only for functions "+text);
+        if(function == null && command == null)
+            throw new RuntimeException("only for functions or commands "+text);
         child.add(ch);
     }
    
@@ -167,6 +127,20 @@ public class MathTerm
     {
     	return dataSet;
     }
+    
+    //MathTerm
+	public MathTerm(MathCommand command) {
+		this.command = command;
+		text = command.getName();
+	}
+
+	public boolean isCommand() {
+		return command != null;
+	}
+
+	public MathCommand getCommand() {
+		return command;
+	}
     
     public MathTerm(MathNumber number)
     {
@@ -204,6 +178,7 @@ public class MathTerm
         if(level >= 0 && op.length() == 1) simpleoperation = op.charAt(0);
     }
    
+	
 	public boolean isAscii()
     {
         for(MathTerm term : child)

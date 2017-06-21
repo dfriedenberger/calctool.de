@@ -4,4 +4,5 @@ PolynomDivision : (x^2 + 3 * x + 2)/(x + 1)
 Plot Functions : plot(sin(x) ^4 + 0.1 * x^2 + 1/4 * x - 1)
 Fractions : 1/2 + 2/6 * 1/7
 Complex numbers : 4 + 3 * sqrt(-1)
-Commands : is 45054
+Is-Command   : is 45054
+Time-Command : time 2147483647

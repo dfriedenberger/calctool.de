@@ -156,5 +156,9 @@ public class MathTokenizer
         if((pos + 1) < v.size()) return v.elementAt(pos + 1);
         return null;
     }
+    
+	public boolean hasToken() {
+		return (pos + 1) < v.size();
+	}
 }
 
