@@ -99,6 +99,24 @@ function sendCommand(command)
 }
 
 
+function fillWithDummy(l)
+{
+	var templateDummy = Handlebars.compile($("#text-dummy").html());
+	
+	for(var i = 0;i < l;i++)
+	{
+		var text    = $(templateDummy({}));
+		$(".calctool-result").append(text);
+	}
+	
+	//Scroll
+	setTimeout(function(){
+		$(".calctool-result")[0].scrollTop = $(".calctool-result")[0].scrollHeight;
+	},100);
+	
+}
+
+
 $(document).ready(function() {
 	
 	
@@ -127,5 +145,5 @@ $(document).ready(function() {
 	});
 	
 	requestExamples();
-	
+	fillWithDummy(12);
 });
