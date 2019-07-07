@@ -14,26 +14,21 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 package de.calctool.cmd;
-import de.calctool.vm.*;
-import java.util.Hashtable;
+
+import java.util.List;
+
+import de.calctool.vm.MathResult;
+import de.calctool.vm.MathRuntime;
+import de.calctool.vm.MathTerm;
 
 public abstract class MathCommand
 {
     abstract public String getName();
-    abstract public MathResult[] eval(MathRuntime rt,String par);
+    
+    abstract public MathResult[] eval(MathRuntime rt,MathTerm child[]);
     
   
-    protected String[] split(String line)
-    {
-	    if(line.trim().equals("")) return new String[0];
-        while(true)
-        {
-            int i = line.indexOf("  ");
-            if(i < 0) break;
-            line = line.substring(0,i) + " " + line.substring(i+2);
-        }
-        return line.trim().split(" ");
-    }
 }
 

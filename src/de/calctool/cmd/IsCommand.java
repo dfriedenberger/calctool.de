@@ -17,25 +17,23 @@
 package de.calctool.cmd;
 import de.calctool.vm.*;
 
-import java.util.Hashtable;
 
 public class IsCommand extends MathCommand
 {
     public String getName() { return "is"; };
-    public MathResult[] eval(MathRuntime rt,String par)
+    public MathResult[] eval(MathRuntime rt,MathTerm term[])
     {
-        String p[] = split(par);
-        MathResult r[] = new MathResult[p.length];
-        for(int i = 0;i < p.length;i++)
-            r[i] = is(p[i]);
+        MathResult r[] = new MathResult[term.length];
+        for(int i = 0;i < term.length;i++)
+            r[i] = is(term[i]);
         return r;
     }
-    private MathResult is(String val)
+    
+    private MathResult is(MathTerm term)
     {
-        MathNumber n = MathNumber.parse(val);
+        MathNumber n = term.getNumber();
         if(n.isLong())
         {
-            String number = "";
             long l = n.getNumerator();
             String out = ""+l+" 0x"+Long.toHexString(l);
 

@@ -1,9 +1,6 @@
 package de.calctool.parser;
 
-import java.util.Hashtable;
 
-import de.calctool.cmd.MathCommand;
-import de.calctool.func.MathFunction;
 import de.calctool.vm.MathMatrix;
 import de.calctool.vm.MathNumber;
 import de.calctool.vm.MathRuntime;

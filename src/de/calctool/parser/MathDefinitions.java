@@ -2,7 +2,6 @@ package de.calctool.parser;
 
 import java.util.Hashtable;
 
-import de.calctool.cmd.ConfigCommand;
 import de.calctool.cmd.IsCommand;
 import de.calctool.cmd.MathCommand;
 import de.calctool.cmd.TimeCommand;
@@ -51,8 +50,7 @@ public class MathDefinitions {
     	        new Sum(),
     	        new Limes() }, new MathCommand[]{ 
 						new IsCommand() , 
-						new TimeCommand() , 
-						new ConfigCommand() 
+						new TimeCommand() 
 						});
 
     	
